@@ -1,1 +1,89 @@
 index.html
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dwayne Alexander · Glass Lantern Studios</title>
+<meta name="description" content="Dwayne Alexander, founder of Glass Lantern Studios: music, spoken word and storytelling from lived experience.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { --night:#0d1117; --deep:#151b24; --fog:#c9cdd3; --mist:#8b939e; --gold:#e0b252; --ember:#f2c66d; --line:#2a323d; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--night); color:var(--fog); font-family:Inter,system-ui,sans-serif; font-size:17px; line-height:1.65; }
+  .glow { background:radial-gradient(ellipse at 50% 0%, rgba(224,178,82,0.22), transparent 60%); }
+  header { max-width:680px; margin:0 auto; padding:72px 20px 48px; text-align:center; }
+  .lantern { width:56px; height:56px; margin:0 auto 24px; filter:drop-shadow(0 0 18px rgba(242,198,109,0.6)); }
+  h1, h2 { font-family:"Cormorant Garamond",Georgia,serif; color:#f4efe4; font-weight:700; line-height:1.15; }
+  h1 { font-size:2.6rem; }
+  .studio { margin-top:8px; color:var(--gold); letter-spacing:0.18em; text-transform:uppercase; font-size:0.8rem; font-weight:600; }
+  .motto { margin-top:28px; font-family:"Cormorant Garamond",Georgia,serif; font-style:italic; font-size:1.35rem; color:var(--ember); }
+  main { max-width:680px; margin:0 auto; padding:0 20px 64px; }
+  section { border-top:1px solid var(--line); padding:40px 0; }
+  h2 { font-size:1.7rem; margin-bottom:14px; }
+  p + p { margin-top:14px; }
+  .card { background:var(--deep); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:10px; padding:20px 22px; margin-top:18px; }
+  .hours { font-family:"Cormorant Garamond",Georgia,serif; font-size:1.5rem; color:#f4efe4; }
+  .small { color:var(--mist); font-size:0.92rem; }
+  ul.rooms { list-style:none; margin-top:14px; }
+  ul.rooms li { padding:10px 0; border-bottom:1px dashed var(--line); }
+  ul.rooms li:last-child { border-bottom:0; }
+  ul.rooms b { color:#f4efe4; }
+  a.button { display:inline-block; margin-top:18px; padding:12px 22px; border-radius:999px; background:var(--gold); color:#1a1406; font-weight:600; text-decoration:none; }
+  a.button:hover { background:var(--ember); }
+  a { color:var(--ember); }
+  footer { text-align:center; color:var(--mist); font-size:0.85rem; padding:32px 20px 48px; border-top:1px solid var(--line); }
+</style>
+</head>
+<body>
+<div class="glow">
+  <header>
+    <svg class="lantern" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M24 10h16M28 10V6h8v4" stroke="#e0b252" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M20 16h24l-3 34H23z" fill="rgba(242,198,109,0.25)" stroke="#e0b252" stroke-width="3" stroke-linejoin="round"/>
+      <ellipse cx="32" cy="34" rx="5" ry="8" fill="#f2c66d"/>
+      <path d="M18 54h28" stroke="#e0b252" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <h1>Dwayne Alexander</h1>
+    <div class="studio">Glass Lantern Studios</div>
+    <p class="motto">We don't hand you the horizon. We hand you a lantern.</p>
+  </header>
+</div>
+<main>
+  <section>
+    <h2>Who I am</h2>
+    <p>Musician, storyteller and studio producer, with over four decades in roots rock, acoustic blues and Celtic folk. I started at nine, playing guitar beside my father's fiddle, and we played together for twenty-six years across Canada.</p>
+    <p>I have a background in music therapy, and everything I make comes from real life. Glass Lantern is built on lived experience, so nobody has to face the hard stuff alone.</p>
+  </section>
+  <section>
+    <h2>The studio</h2>
+    <p>Glass Lantern Studios is a music, spoken word and storytelling house, and a harbour. Concept albums and songs that give honest shape to the heavy, unspoken things, and company for the ordinary hours.</p>
+    <ul class="rooms">
+      <li><b>The Glass Lantern</b> — the band, and the music catalogue so far</li>
+      <li><b>Tales from the Sound Hole</b> — true stories, told in my own voice</li>
+      <li><b>The Calavera Hour</b> — short spoken word over fingerstyle blues, about the people we miss</li>
+      <li><b>The Raven's Wire</b> — spoken word turned into music across many sounds</li>
+      <li><b>Obsidian Lantern</b> — my record label, turning real people's stories into songs</li>
+    </ul>
+    <a class="button" href="https://suno.com/playlist/767e1297-6834-4951-9731-3d387c5b9fd2">Listen to the music</a>
+  </section>
+  <section>
+    <h2>The morning room</h2>
+    <p>A daily hour of music and stories, built for people who need a spark to start the day rather than a meeting. Music keeps rolling. No agenda, no performance. Drop the mask at the door, stay as long as you like, and say something or nothing.</p>
+    <div class="card">
+      <div class="hours">6:30 to 7:30 am</div>
+      <div>Tuesday to Saturday</div>
+      <div class="small">Mountain Time (Edmonton)</div>
+    </div>
+  </section>
+  <section>
+    <h2>Find me</h2>
+    <p>I'm on the beach, an open commons for people building things together.</p>
+    <a class="button" href="https://happyseaurchin.com/page/Dwayne">My page on the beach</a>
+  </section>
+</main>
+<footer>Glass Lantern Studios · Music · Creativity · Distribution</footer>
+</body>
+</html>
