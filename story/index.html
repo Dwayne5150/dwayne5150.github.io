@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Obsidian Lantern: tell Dwayne your true story and he will turn it into a song, artwork or a full album.">
+<meta name="description" content="Obsidian Lantern: tell Dwayne and Alex your true story and they will turn it into a song, artwork or a full album.">
 <title>Tell Your Story · Obsidian Lantern</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -103,7 +103,7 @@ pre{white-space:pre-wrap;word-break:break-word;font-family:var(--f-mono);font-si
     <span class="eyebrow">Obsidian Lantern · a home for true stories</span>
     <h1>Tell us the story. We'll make it into something real.</h1>
     <p>You don't need to be a musician or an artist. If you've lived it and it marked you, it's worth telling. Dark or light, big or small, as long as it's true.</p>
-    <p class="promise">Nothing you type here is sent anywhere. When you're ready, email it to Dwayne from the bottom of the page. Your draft stays saved on this device so you can come back to it; press <b>Clear the form</b> at the bottom when you're done, especially on a shared computer.</p>
+    <p class="promise">Nothing you type here is sent anywhere. When you're ready, email it to Dwayne and Alex from the bottom of the page. Your draft stays saved on this device so you can come back to it; press <b>Clear the form</b> at the bottom when you're done, especially on a shared computer.</p>
   </header>
 
   <form id="f" autocomplete="off">
@@ -153,13 +153,13 @@ pre{white-space:pre-wrap;word-break:break-word;font-family:var(--f-mono);font-si
       <label><input type="checkbox" id="x-video" value="Video ($150–300)"> Video · $150–300</label>
       <label><input type="checkbox" id="x-concert" value="Concert, performed and taped (priced per event)"> Concert, performed and taped · priced per event</label>
     </div>
-    <p class="waive">If money is tight and your story matters to you, tell Dwayne anyway. There's always a way in.</p>
+    <p class="waive">If money is tight and your story matters to you, tell us anyway. There's always a way in.</p>
   </section>
   </div>
   </form>
 
   <section class="stage">
-    <div class="stage-head"><span class="num">4</span><div><h2>Send it</h2><p>Check it over, then email it to Dwayne at <a href="mailto:dogpatchsspanishfly@gmail.com">dogpatchsspanishfly@gmail.com</a>. You can also share or copy it and send it to him any other way.</p></div></div>
+    <div class="stage-head"><span class="num">4</span><div><h2>Send it</h2><p>Check it over, then email it to Dwayne and Alex at <a href="mailto:dogpatchsspanishfly@gmail.com">dogpatchsspanishfly@gmail.com</a>. You can also share or copy it and send it to them any other way.</p></div></div>
     <div class="preview">
       <div class="actions"><span class="tag" id="exampleTag">Example · fill in the form to make it yours</span></div>
       <div class="tabs" role="tablist">
@@ -168,13 +168,13 @@ pre{white-space:pre-wrap;word-break:break-word;font-family:var(--f-mono);font-si
       </div>
       <div id="p-story" role="tabpanel"><pre id="outStory"></pre></div>
       <div id="p-studio" role="tabpanel" class="sheet" hidden>
-        <p class="small">For Dwayne in the studio: a starting point to shape by ear, not a finished prompt.</p>
+        <p class="small">For Dwayne and Alex in the studio: a starting point to shape by ear, not a finished prompt.</p>
         <div><h3>Suno style tags</h3><pre id="outStyle"></pre></div>
         <div><h3>Their music, for your ear</h3><p class="small">Listen for feel and sound. Keep artist names out of the Suno prompt; Suno won't take them.</p><pre id="outMusic"></pre></div>
         <div><h3>Lyric seeds</h3><pre id="outSeeds"></pre></div>
       </div>
       <div class="actions">
-        <button type="button" class="btn" id="email">Email it to Dwayne</button>
+        <button type="button" class="btn" id="email">Email it to us</button>
         <button type="button" class="btn ghost" id="share" hidden>Share</button>
         <button type="button" class="btn ghost" id="copy">Copy</button>
         <button type="button" class="btn ghost" id="clear">Clear the form</button>
@@ -216,7 +216,7 @@ const isEmpty=d=>TEXT.every(k=>!d[k])&&!d.moods.length&&!d.rung;
 
 function storyText(d){
   const L=[];
-  L.push(`OBSIDIAN LANTERN · STORY FOR DWAYNE`);
+  L.push(`OBSIDIAN LANTERN · STORY FOR DWAYNE & ALEX`);
   L.push(`From: ${d.name||"(no name given)"}`);
   if(d.rung)L.push(`Rung: ${d.rung} (${PRICE[d.rung]} CAD)${d.extras.length?" + "+d.extras.join(", "):""}`);
   L.push("");
@@ -288,11 +288,11 @@ $("email").onclick=()=>{
   $("status").textContent="Your email app should open with your story in it. If it doesn't, use Copy and paste it into an email to dogpatchsspanishfly@gmail.com.";
 };
 $("share").onclick=()=>{
-  navigator.share({title:"My story for Dwayne",text:outText()}).then(()=>{$("status").textContent="Shared."},e=>{if(e&&e.name!=="AbortError")$("status").textContent="Couldn't open sharing. Use Copy instead."});
+  navigator.share({title:"My story for Dwayne and Alex",text:outText()}).then(()=>{$("status").textContent="Shared."},e=>{if(e&&e.name!=="AbortError")$("status").textContent="Couldn't open sharing. Use Copy instead."});
 };
 $("copy").onclick=()=>{
   const text=outText();
-  const done=()=>{$("status").textContent="Copied. Paste it into a message to Dwayne."};
+  const done=()=>{$("status").textContent="Copied. Paste it into a message to Dwayne and Alex."};
   const fallback=()=>{const el=tab==="story"?$("outStory"):$("p-studio");const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);$("status").textContent="Text selected. Copy it from your device menu."};
   try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
 };
