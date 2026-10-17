@@ -14,7 +14,7 @@
   body { background:var(--night); color:var(--fog); font-family:Inter,system-ui,sans-serif; font-size:17px; line-height:1.65; }
   .glow { background:radial-gradient(ellipse at 50% 0%, rgba(224,178,82,0.22), transparent 60%); }
   header { max-width:680px; margin:0 auto; padding:72px 20px 48px; text-align:center; }
-  .lantern { width:56px; height:56px; margin:0 auto 24px; filter:drop-shadow(0 0 18px rgba(242,198,109,0.6)); }
+  .lantern { width:120px; height:170px; margin:0 auto 24px; filter:drop-shadow(0 0 18px rgba(242,198,109,0.6)); }
   h1, h2 { font-family:"Cormorant Garamond",Georgia,serif; color:#f4efe4; font-weight:700; line-height:1.15; }
   h1 { font-size:2.6rem; }
   .studio { margin-top:8px; color:var(--gold); letter-spacing:0.18em; text-transform:uppercase; font-size:0.8rem; font-weight:600; }
@@ -49,12 +49,24 @@
 <nav class="lang" aria-label="Idioma"><a href="../" hreflang="en" lang="en">English</a> · <span aria-current="page">Español</span></nav>
 <div class="glow">
   <header>
-    <svg class="lantern" viewBox="0 0 64 64" aria-hidden="true">
-      <path d="M24 10h16M28 10V6h8v4" stroke="#e0b252" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <path d="M20 16h24l-3 34H23z" fill="rgba(242,198,109,0.25)" stroke="#e0b252" stroke-width="3" stroke-linejoin="round"/>
-      <ellipse cx="32" cy="34" rx="5" ry="8" fill="#f2c66d"/>
-      <path d="M18 54h28" stroke="#e0b252" stroke-width="3" stroke-linecap="round"/>
-    </svg>
+    <svg class="lantern" viewBox="0 0 120 170" aria-hidden="true">
+  <defs><radialGradient id="lb-glow" cx="50%" cy="55%" r="50%"><stop offset="0" stop-color="#fff3c4"/><stop offset=".4" stop-color="#f2c66d"/><stop offset="1" stop-color="#f2c66d" stop-opacity="0"/></radialGradient></defs>
+  <circle cx="60" cy="12" r="6" fill="none" stroke="#e0b252" stroke-width="3"/>
+  <path d="M60 18 V26" stroke="#e0b252" stroke-width="3"/>
+  <path d="M60 24 L94 52 H26 Z" fill="#e0b252"/>
+  <path d="M60 24 L60 52" stroke="#a87c2c" stroke-width="2"/>
+  <rect x="22" y="52" width="76" height="7" rx="2" fill="#c99a3e"/>
+  <rect x="30" y="59" width="60" height="70" fill="rgba(242,198,109,0.16)"/>
+  <ellipse cx="60" cy="96" rx="30" ry="34" fill="url(#lb-glow)"/>
+  <path d="M60 76 C70 90 68 104 60 112 C52 104 50 90 60 76 Z" fill="#fff3c4"/>
+  <path d="M60 87 C65 96 64 104 60 108 C56 104 55 96 60 87 Z" fill="#f2a93a"/>
+  <rect x="56" y="112" width="8" height="10" fill="#c99a3e"/>
+  <path d="M30 59 V129 M48 59 V129 M72 59 V129 M90 59 V129" stroke="#e0b252" stroke-width="3"/>
+  <path d="M30 59 H90 M30 129 H90" stroke="#e0b252" stroke-width="3"/>
+  <rect x="24" y="129" width="72" height="8" rx="2" fill="#c99a3e"/>
+  <path d="M30 137 H90 L80 152 H40 Z" fill="#e0b252"/>
+  <rect x="44" y="152" width="32" height="8" rx="2" fill="#c99a3e"/>
+</svg>
     <h1>Glass Lantern Studios</h1>
     <p class="partners">Glass Lantern Studios está dirigido por sus cofundadores, Dwayne Alexander y <a href="https://coachalex1.github.io">Alex Gamboa</a>, socios a partes iguales en todo lo que hacemos.</p>
     <p class="motto">No te damos el horizonte. Te damos una linterna.</p>
