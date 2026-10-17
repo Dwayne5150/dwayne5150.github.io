@@ -92,11 +92,16 @@ pre{white-space:pre-wrap;word-break:break-word;font-family:var(--f-mono);font-si
 .stage-head a,.promise a{color:var(--sea)}
 .small{font-size:14px;color:var(--muted)}
 @media (prefers-reduced-motion:no-preference){.lamp{animation:flick 4s ease-in-out infinite}@keyframes flick{50%{opacity:.75}}}
+.lang{font-size:14px;color:var(--muted);text-align:right}
+.lang a{color:var(--sea)}
+.lang [aria-current]{color:var(--ink);font-weight:700}
+.back{color:var(--sea)}
 </style>
 </head>
 <body>
 
 <div class="wrap">
+  <nav class="lang" aria-label="Language"><a class="back" href="../">← Glass Lantern Studios</a> · <span aria-current="page">English</span> · <a href="../es/story/" hreflang="es" lang="es">Español</a></nav>
   <header>
     <img class="hero" src="img/glass-lantern-badge.jpg" alt="Glass Lantern Studios badge: a rainbow-flame lantern over a lighthouse cove, with guitar and shot put ball">
     <div class="lamp" aria-hidden="true"></div>

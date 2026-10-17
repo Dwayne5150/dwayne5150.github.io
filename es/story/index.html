@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Obsidian Lantern: cuéntales tu historia real a Dwayne y Alex, y la convertirán en una canción, una obra de arte o un álbum completo.">
+<title>Cuenta tu historia · Obsidian Lantern</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single column "ship's log" — numbered stages down the page, a glowing preview card at the end */
+:root{
+  --bg:#eeeae2; --surface:#f8f6f1; --ink:#1f2629; --muted:#5c6669; --line:#d3cdc0;
+  --brass:#9a6a1c; --glow:#e6a93a; --sea:#2f5560; --chip:#e4ddcf;
+  --f-display:"Young Serif", Georgia, serif;
+  --f-body:"Atkinson Hyperlegible", system-ui, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12191c; --surface:#1a2428; --ink:#e9e3d6; --muted:#9aa4a5; --line:#2d3a3f;
+  --brass:#e0a948; --glow:#f2b84b; --sea:#7fb0bb; --chip:#243237; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12191c; --surface:#1a2428; --ink:#e9e3d6; --muted:#9aa4a5; --line:#2d3a3f;
+  --brass:#e0a948; --glow:#f2b84b; --sea:#7fb0bb; --chip:#243237; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;padding-inline:16px;padding-block:28px 64px}
+.wrap{max-width:680px;margin-inline:auto;display:grid;gap:40px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;line-height:1.15}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}
+
+header{display:grid;gap:14px;padding-top:8px}
+.hero{width:100%;max-width:100%;height:auto;border-radius:10px;border:1px solid var(--line);display:block}
+.art{display:grid;gap:8px}
+.art-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.art-strip img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;border:1px solid var(--line);display:block}
+@media (max-width:480px){.art-strip{grid-template-columns:repeat(2,1fr)}}
+.lamp{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 50% 45%,var(--glow) 0 18%,color-mix(in srgb,var(--glow) 35%,transparent) 40%,transparent 70%)}
+header h1{font-size:clamp(32px,8vw,46px)}
+header p{color:var(--muted);max-width:56ch}
+.promise{font-size:15px;border-left:2px solid var(--glow);padding-left:12px;color:var(--ink)}
+
+section.stage{display:grid;gap:18px}
+.stage-head{display:flex;gap:14px;align-items:baseline}
+.num{font-family:var(--f-mono);color:var(--brass);font-size:14px;min-width:2ch}
+.stage-head h2{font-size:24px}
+.stage-head p{color:var(--muted);font-size:15px;margin-top:4px}
+
+.field{display:grid;gap:6px}
+label,.legend{font-weight:700;font-size:15px}
+.hint{color:var(--muted);font-size:14px;font-weight:400}
+input[type=text],textarea,select{width:100%;font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+textarea{min-height:120px;resize:vertical}
+input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-visible,.choice input:focus-visible+span{outline:2px solid var(--glow);outline-offset:2px}
+.row{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.row>*{min-width:0}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.choice{position:relative}
+.choice input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.choice span{display:inline-block;padding:7px 14px;border-radius:999px;background:var(--chip);border:1px solid transparent;font-size:15px;cursor:pointer}
+.choice input:checked+span{border-color:var(--brass);background:color-mix(in srgb,var(--glow) 22%,var(--chip))}
+
+.rungs{display:grid;gap:10px}
+.rung{position:relative;display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);cursor:pointer}
+.rung input{position:absolute;opacity:0}
+.rung .flame{width:28px;height:28px;border-radius:50%;margin-top:2px}
+.rung h3{font-size:19px}
+.rung-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.price{font-family:var(--f-mono);font-size:14px;color:var(--brass);font-variant-numeric:tabular-nums;white-space:nowrap}
+.waive{font-size:15px;color:var(--muted)}
+.rung p{font-size:15px;color:var(--muted);font-weight:400}
+.rung:has(input:checked){border-color:var(--brass);box-shadow:0 0 0 1px var(--brass),0 0 24px color-mix(in srgb,var(--glow) 25%,transparent)}
+.rung:has(input:focus-visible){outline:2px solid var(--glow);outline-offset:2px}
+.addons{display:grid;gap:8px;padding:12px 14px;border:1px dashed var(--line);border-radius:8px}
+.addons label{font-weight:400;display:flex;gap:10px;align-items:center}
+
+.preview{display:grid;gap:18px;padding:22px;border-radius:10px;background:var(--surface);border:1px solid var(--line);box-shadow:0 0 40px color-mix(in srgb,var(--glow) 12%,transparent)}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:12px;padding:3px 8px;border-radius:4px;background:color-mix(in srgb,var(--glow) 25%,var(--chip));color:var(--ink)}
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line)}
+.tabs button{font:inherit;font-size:15px;background:none;border:none;color:var(--muted);padding:8px 12px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
+.tabs button[aria-selected=true]{color:var(--ink);border-color:var(--brass);font-weight:700}
+pre{white-space:pre-wrap;word-break:break-word;font-family:var(--f-mono);font-size:13.5px;line-height:1.6;margin:0;color:var(--ink)}
+.sheet{display:grid;gap:14px}
+.sheet h3{font-size:16px;font-family:var(--f-body);font-weight:700}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{font:inherit;font-weight:700;padding:10px 18px;border-radius:6px;border:1px solid var(--brass);background:var(--brass);color:var(--bg);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line);font-weight:400}
+.status{font-size:14px;color:var(--sea)}
+.stage-head a,.promise a{color:var(--sea)}
+.small{font-size:14px;color:var(--muted)}
+@media (prefers-reduced-motion:no-preference){.lamp{animation:flick 4s ease-in-out infinite}@keyframes flick{50%{opacity:.75}}}
+.lang{font-size:14px;color:var(--muted);text-align:right}
+.lang a{color:var(--sea)}
+.lang [aria-current]{color:var(--ink);font-weight:700}
+.back{color:var(--sea)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav class="lang" aria-label="Idioma"><a class="back" href="../">← Glass Lantern Studios</a> · <a href="../../story/" hreflang="en" lang="en">English</a> · <span aria-current="page">Español</span></nav>
+  <header>
+    <img class="hero" src="../../story/img/glass-lantern-badge.jpg" alt="Insignia de Glass Lantern Studios: una linterna con llama arcoíris sobre una caleta con faro, con guitarra y bala de lanzamiento">
+    <div class="lamp" aria-hidden="true"></div>
+    <span class="eyebrow">Obsidian Lantern · un hogar para historias reales</span>
+    <h1>Cuéntanos la historia. La convertiremos en algo real.</h1>
+    <p>No necesitas ser músico ni artista. Si lo viviste y te marcó, vale la pena contarlo. Oscura o luminosa, grande o pequeña, siempre que sea verdad.</p>
+    <p class="promise">Nada de lo que escribas aquí se envía a ningún lado. Cuando estés listo o lista, envíaselo por correo a Dwayne y Alex desde el final de la página. Tu borrador queda guardado en este dispositivo para que puedas volver a él; al terminar, pulsa <b>Borrar el formulario</b> al final, sobre todo en una computadora compartida.</p>
+  </header>
+
+  <form id="f" autocomplete="off">
+  <div class="wrap" style="padding:0">
+
+  <section class="stage">
+    <div class="stage-head"><span class="num">1</span><div><h2>Tu historia</h2><p>Tanto o tan poco como quieras. Los detalles ayudan: dónde estabas, quién estaba allí, qué recuerdas.</p></div></div>
+    <div class="field"><label for="name">¿Cómo te llamamos?</label><input type="text" id="name" placeholder="Tu nombre o un apodo"></div>
+    <div class="field"><label for="story">¿Qué pasó?</label><textarea id="story" placeholder="Cuéntalo como se lo contarías a un amigo."></textarea></div>
+    <div class="row">
+      <div class="field"><label for="then">¿Cómo se sintió en ese momento?</label><textarea id="then" style="min-height:80px"></textarea></div>
+      <div class="field"><label for="now">¿Cómo lo llevas hoy?</label><textarea id="now" style="min-height:80px"></textarea></div>
+    </div>
+    <div class="field">
+      <span class="legend">¿Cómo quieres que se sienta al escucharla? <span class="hint">Elige las que quieras</span></span>
+      <div class="chips" id="moods"></div>
+    </div>
+  </section>
+
+  <section class="stage">
+    <div class="stage-head"><span class="num">2</span><div><h2>Tu mundo</h2><p>Así la pieza termina sonando como tú, y no solo hablando de ti.</p></div></div>
+    <div class="row">
+      <div class="field"><label for="era">¿En qué época creciste?</label><select id="era"></select></div>
+      <div class="field"><label for="place">Lugares que importan</label><input type="text" id="place" placeholder="Un pueblo, una calle, una cocina"></div>
+    </div>
+    <div class="field"><label for="music">Música que amas <span class="hint">Canciones, artistas, estilos</span></label><input type="text" id="music" placeholder="p. ej. Juan Gabriel, rock de los 90, valses criollos los domingos"></div>
+    <div class="field"><label for="passions">Tus pasiones y cosas favoritas</label><input type="text" id="passions" placeholder="Pescar, mi perro, autos antiguos, hornear pan"></div>
+    <div class="field"><label for="words">Palabras o dichos que son tuyos <span class="hint">Algo que tú o tu gente siempre dicen</span></label><input type="text" id="words"></div>
+    <div class="field"><label for="avoid">¿Algo que prefieras dejar fuera?</label><input type="text" id="avoid" placeholder="Nombres, detalles o temas que quieras mantener en privado"></div>
+  </section>
+
+  <section class="stage">
+    <div class="stage-head"><span class="num">3</span><div><h2>Elige tu peldaño</h2><p>Desde una chispa hasta un faro completo. Entra donde te quede bien y sube cuando quieras. Los precios están en dólares canadienses.</p></div></div>
+    <div class="art">
+      <p class="small">El tipo de arte que viene desde Destello en adelante:</p>
+      <div class="art-strip">
+        <img src="../../story/img/anchor-ally-porch.jpg" alt="Porche con niebla, linterna arcoíris, guitarra, calavera de azúcar, lobo y cuervo" loading="lazy">
+        <img src="../../story/img/porch-watercolour.jpg" alt="Acuarela de una calavera de azúcar, una guitarra y una linterna en un porche con un cuervo" loading="lazy">
+        <img src="../../story/img/glass-lantern-mural-taylor.jpg" alt="Mural de calavera de azúcar de Glass Lantern en la pared de una cueva, firmado por Taylor" loading="lazy">
+        <img src="../../story/img/sugar-skull-sleeping-beauty.jpg" alt="Calavera de azúcar coloreada a mano en turquesa, coral, dorado y verde" loading="lazy">
+      </div>
+    </div>
+    <div class="rungs" id="rungs"></div>
+    <div class="addons" id="addons" hidden>
+      <span class="legend">Extras del Faro</span>
+      <label><input type="checkbox" id="x-merch" value="Merch, t-shirt with your artwork ($30–50)"> Merch: camiseta con tu arte · $30–50</label>
+      <label><input type="checkbox" id="x-video" value="Video ($150–300)"> Video · $150–300</label>
+      <label><input type="checkbox" id="x-concert" value="Concert, performed and taped (priced per event)"> Concierto en vivo y grabado · precio según el evento</label>
+    </div>
+    <p class="waive">Si el dinero está justo y tu historia te importa, cuéntanosla igual. Siempre hay una forma de entrar.</p>
+  </section>
+  </div>
+  </form>
+
+  <section class="stage">
+    <div class="stage-head"><span class="num">4</span><div><h2>Envíala</h2><p>Revísala y luego envíasela por correo a Dwayne y Alex a <a href="mailto:dogpatchsspanishfly@gmail.com">dogpatchsspanishfly@gmail.com</a>. También puedes compartirla o copiarla y enviársela de cualquier otra forma.</p></div></div>
+    <div class="preview">
+      <div class="actions"><span class="tag" id="exampleTag">Ejemplo · completa el formulario para hacerla tuya</span></div>
+      <div class="tabs" role="tablist">
+        <button type="button" role="tab" id="t-story" aria-selected="true" aria-controls="p-story">Tu historia</button>
+        <button type="button" role="tab" id="t-studio" aria-selected="false" aria-controls="p-studio">Hoja de estudio</button>
+      </div>
+      <div id="p-story" role="tabpanel"><pre id="outStory"></pre></div>
+      <div id="p-studio" role="tabpanel" class="sheet" hidden>
+        <p class="small">Para Dwayne y Alex en el estudio: un punto de partida para trabajar de oído, no un prompt terminado. Las etiquetas de estilo van en inglés porque Suno funciona mejor así.</p>
+        <div><h3>Etiquetas de estilo para Suno</h3><pre id="outStyle"></pre></div>
+        <div><h3>Su música, para el oído</h3><p class="small">Escucha el sentimiento y el sonido. No pongas nombres de artistas en el prompt de Suno; Suno no los acepta.</p><pre id="outMusic"></pre></div>
+        <div><h3>Semillas para la letra</h3><pre id="outSeeds"></pre></div>
+      </div>
+      <div class="actions">
+        <button type="button" class="btn" id="email">Envíanosla por correo</button>
+        <button type="button" class="btn ghost" id="share" hidden>Compartir</button>
+        <button type="button" class="btn ghost" id="copy">Copiar</button>
+        <button type="button" class="btn ghost" id="clear">Borrar el formulario</button>
+        <span class="status" id="status" aria-live="polite"></span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+const MOODS=["Tender","Hopeful","Defiant","Big and sweeping","Quiet","Celebratory","Bittersweet","Fun"];
+const MOOD_ES={"Tender":"Tierna","Hopeful":"Esperanzadora","Defiant":"Desafiante","Big and sweeping":"Grande y envolvente","Quiet":"Serena","Celebratory":"De celebración","Bittersweet":"Agridulce","Fun":"Divertida"};
+const RUNG_ES={"Spark":"Chispa","Flicker":"Destello","Glow":"Resplandor","Flame":"Llama","Lighthouse":"Faro"};
+const ERAS=[["","Elige una década"],["40s","Años 40 o antes"],["50s","Años 50"],["60s","Años 60"],["70s","Años 70"],["80s","Años 80"],["90s","Años 90"],["00s","Años 2000"],["10s","Años 2010"],["20s","Años 2020"]];
+const ERA_SOUND={"40s":"1940s swing and big band, vintage ribbon-mic warmth","50s":"1950s rockabilly warmth, tape echo","60s":"1960s soul and folk revival, warm analog","70s":"1970s classic rock and country, wide stereo","80s":"1980s gated drums, chorus guitars, synth pads","90s":"1990s alt-rock and grunge texture, raw guitars","00s":"2000s indie and pop-punk energy","10s":"2010s indie folk, stomp-and-clap","20s":"2020s modern indie, lo-fi textures, bedroom-pop intimacy"};
+const MOOD_SOUND={"Tender":"intimate, fingerstyle acoustic","Hopeful":"rising build, major-key lift","Defiant":"driving rhythm, gritty edge","Big and sweeping":"cinematic swell, layered strings","Quiet":"sparse arrangement, close-mic vocal","Celebratory":"upbeat, handclaps, singalong chorus","Bittersweet":"minor-to-major turn, slow blues phrasing","Fun":"bouncy groove, playful hooks"};
+const RUNGS=[
+ ["Spark","Una canción. Tu historia en una sola pieza.",.35,"$25–40"],
+ ["Flicker","Una canción más una imagen.",.5,"$55–75"],
+ ["Glow","Tres canciones más arte. La historia contada en tres piezas.",.65,"$120–160"],
+ ["Flame","Seis canciones. Medio álbum, una gran parte de tu historia.",.82,"$275–375"],
+ ["Lighthouse","El álbum completo: diez canciones y una portada, con merch, video y un concierto grabado como extras.",1,"$600–800+"]];
+const ERA_LABEL=Object.fromEntries(ERAS);
+const PRICE=Object.fromEntries(RUNGS.map(r=>[r[0],r[3]]));
+const EXAMPLE={name:"María",story:"Todos los domingos mi abuelo freía pan en una sartén de hierro y tocaba las mismas tres melodías de violín en el porche mientras se enfriaba. Cuando se enfermó, fui yo quien se sentaba con él, y él tarareaba esas melodías cuando ya no encontraba las palabras. Después de que partió, encontré la sartén en el sótano de mi mamá. Todavía hago pan en ella cada domingo, y tarareo las melodías que apenas recuerdo.",then:"Asustada, y demasiado joven para saber cómo despedirme.",now:"Agradecida. Como si me hubiera dejado algo que todavía puedo sostener.",moods:["Tender","Bittersweet"],era:"",place:"El porche del abuelo",music:"Violín tradicional, folk, la radio en la camioneta del abuelo",passions:"Hornear, acampar, mis dos hijos",words:"\"Despacito y con calma, mija\"",avoid:"El nombre de mi tío",rung:"Spark",extras:[]};
+
+const $=id=>document.getElementById(id);
+$("moods").innerHTML=MOODS.map((m,i)=>`<label class="choice"><input type="checkbox" id="m${i}" value="${m}"><span>${MOOD_ES[m]}</span></label>`).join("");
+$("era").innerHTML=ERAS.map(([v,t])=>`<option value="${v}">${t}</option>`).join("");
+$("rungs").innerHTML=RUNGS.map(([n,d,g,p],i)=>`<label class="rung"><input type="radio" name="rung" id="r${i}" value="${n}"><span class="flame" style="background:radial-gradient(circle,var(--glow) 0 ${g*30}%,color-mix(in srgb,var(--glow) ${Math.round(g*45)}%,transparent) ${g*55}%,transparent 72%)"></span><div><div class="rung-top"><h3>${RUNG_ES[n]}</h3><span class="price">${p}</span></div><p>${d}</p></div></label>`).join("");
+
+const TEXT=["name","story","then","now","era","place","music","passions","words","avoid"];
+function read(){
+  const d={};TEXT.forEach(k=>d[k]=$(k).value.trim());
+  d.moods=[...document.querySelectorAll("#moods input:checked")].map(i=>i.value);
+  const r=document.querySelector("input[name=rung]:checked");d.rung=r?r.value:"";
+  d.extras=[...document.querySelectorAll("#addons input:checked")].map(i=>i.value);
+  return d;
+}
+const isEmpty=d=>TEXT.every(k=>!d[k])&&!d.moods.length&&!d.rung;
+
+function storyText(d){
+  const L=[];
+  L.push(`OBSIDIAN LANTERN · HISTORIA PARA DWAYNE Y ALEX (en español)`);
+  L.push(`De: ${d.name||"(sin nombre)"}`);
+  if(d.rung)L.push(`Peldaño: ${RUNG_ES[d.rung]} / ${d.rung} (${PRICE[d.rung]} CAD)${d.extras.length?" + "+d.extras.join(", "):""}`);
+  L.push("");
+  if(d.story)L.push("LA HISTORIA (THE STORY)\n"+d.story+"\n");
+  if(d.then)L.push("CÓMO SE SINTIÓ ENTONCES (HOW IT FELT THEN)\n"+d.then+"\n");
+  if(d.now)L.push("CÓMO LO LLEVO HOY (HOW IT SITS NOW)\n"+d.now+"\n");
+  if(d.moods.length)L.push("CÓMO QUIERO QUE SE SIENTA (HOW I WANT IT TO FEEL)\n"+d.moods.map(m=>MOOD_ES[m]+" / "+m).join(", ")+"\n");
+  const w=[];
+  if(d.era)w.push("Crecí en: "+ERA_LABEL[d.era]);
+  if(d.place)w.push("Lugares: "+d.place);
+  if(d.music)w.push("Música que amo: "+d.music);
+  if(d.passions)w.push("Pasiones: "+d.passions);
+  if(d.words)w.push("Mis palabras: "+d.words);
+  if(w.length)L.push("MI MUNDO (MY WORLD)\n"+w.join("\n")+"\n");
+  if(d.avoid)L.push("POR FAVOR DEJAR FUERA (PLEASE LEAVE OUT)\n"+d.avoid);
+  return L.join("\n").trim();
+}
+function styleTags(d){
+  const t=[];
+  if(d.era)t.push(ERA_SOUND[d.era]);
+  d.moods.forEach(m=>t.push(MOOD_SOUND[m]));
+  t.push("roots storytelling, lantern-glow warmth");
+  return t.join(", ");
+}
+function seeds(d){
+  const s=[];
+  if(d.place)s.push(`Abrir la primera estrofa en ${d.place}: una imagen en la que alguien pueda pararse.`);
+  if(d.then)s.push(`Sentimiento de la estrofa 1: "${d.then}"`);
+  if(d.now)s.push(`El puente o la última estrofa gira hacia: "${d.now}"`);
+  if(d.words)s.push(`Posible gancho, en sus propias palabras: ${d.words}`);
+  if(d.passions)s.push(`Entretejer su mundo: ${d.passions}`);
+  if(d.moods.length)s.push(`Darle un tono ${d.moods.map(m=>MOOD_ES[m]).join(" y ").toLowerCase()}.`);
+  if(d.avoid)s.push(`Dejar fuera: ${d.avoid}`);
+  if(!s.length)s.push("Completa el formulario para ver las semillas aquí.");
+  return s.map(x=>"· "+x).join("\n");
+}
+function render(){
+  const raw=read(),ex=isEmpty(raw),d=ex?EXAMPLE:raw;
+  $("exampleTag").hidden=!ex;
+  $("outStory").textContent=storyText(d);
+  $("outStyle").textContent=styleTags(d);
+  $("outSeeds").textContent=seeds(d);
+  $("outMusic").textContent=d.music||"(nada indicado)";
+  $("addons").hidden=raw.rung!=="Lighthouse";
+  try{localStorage.setItem("ol-draft-es",JSON.stringify(raw))}catch(e){}
+}
+function load(){
+  let d;try{d=JSON.parse(localStorage.getItem("ol-draft-es")||"null")}catch(e){}
+  if(!d)return;
+  TEXT.forEach(k=>{if(d[k])$(k).value=d[k]});
+  document.querySelectorAll("#moods input").forEach(i=>i.checked=(d.moods||[]).includes(i.value));
+  document.querySelectorAll("input[name=rung]").forEach(i=>i.checked=i.value===d.rung);
+  document.querySelectorAll("#addons input").forEach(i=>i.checked=(d.extras||[]).includes(i.value));
+}
+$("rungs").addEventListener("change",()=>{const r=document.querySelector("input[name=rung]:checked");if(!r||r.value!=="Lighthouse")document.querySelectorAll("#addons input").forEach(i=>i.checked=false)});
+$("f").addEventListener("input",render);
+$("f").addEventListener("change",render);
+$("f").addEventListener("submit",e=>e.preventDefault());
+
+let tab="story";
+function setTab(t){tab=t;$("t-story").setAttribute("aria-selected",t==="story");$("t-studio").setAttribute("aria-selected",t==="studio");$("p-story").hidden=t!=="story";$("p-studio").hidden=t!=="studio";}
+$("t-story").onclick=()=>setTab("story");$("t-studio").onclick=()=>setTab("studio");
+
+const outText=()=>tab==="story"?$("outStory").textContent:"ESTILO\n"+$("outStyle").textContent+"\n\nSU MÚSICA (de oído, no para el prompt)\n"+$("outMusic").textContent+"\n\nSEMILLAS PARA LA LETRA\n"+$("outSeeds").textContent;
+if(navigator.share)$("share").hidden=false;
+$("email").onclick=()=>{
+  const d=read(),who=d.name||"alguien";
+  location.href="mailto:dogpatchsspanishfly@gmail.com?subject="+encodeURIComponent("Mi historia para Obsidian Lantern, de "+who+" (en español)")+"&body="+encodeURIComponent($("outStory").textContent);
+  $("status").textContent="Tu aplicación de correo debería abrirse con tu historia. Si no se abre, usa Copiar y pégala en un correo a dogpatchsspanishfly@gmail.com.";
+};
+$("share").onclick=()=>{
+  navigator.share({title:"Mi historia para Dwayne y Alex",text:outText()}).then(()=>{$("status").textContent="Compartida."},e=>{if(e&&e.name!=="AbortError")$("status").textContent="No se pudo compartir. Usa Copiar."});
+};
+$("copy").onclick=()=>{
+  const text=outText();
+  const done=()=>{$("status").textContent="Copiada. Pégala en un mensaje para Dwayne y Alex."};
+  const fallback=()=>{const el=tab==="story"?$("outStory"):$("p-studio");const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);$("status").textContent="Texto seleccionado. Cópialo desde el menú de tu dispositivo."};
+  try{navigator.clipboard.writeText(text).then(done,fallback)}catch(e){fallback()}
+};
+let armed=false;
+$("clear").onclick=()=>{
+  if(!armed){armed=true;$("clear").textContent="Toca otra vez para borrar";setTimeout(()=>{armed=false;$("clear").textContent="Borrar el formulario"},3000);return;}
+  $("f").reset();armed=false;$("clear").textContent="Borrar el formulario";try{localStorage.removeItem("ol-draft-es")}catch(e){}render();$("status").textContent="Formulario borrado.";
+};
+load();render();
+</script>
+
+</body>
+</html>

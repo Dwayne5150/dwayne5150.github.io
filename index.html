@@ -39,10 +39,14 @@
   .pair img.photo { margin:0; }
   .tagline { font-family:"Cormorant Garamond",Georgia,serif; font-style:italic; font-size:1.35rem; color:var(--ember); }
   h3 { font-family:"Cormorant Garamond",Georgia,serif; color:#f4efe4; font-size:1.3rem; margin:26px 0 6px; }
+  .lang { position:absolute; top:14px; right:16px; font-size:0.85rem; color:var(--mist); }
+  .lang a { color:var(--ember); text-decoration:none; }
+  .lang [aria-current] { color:#f4efe4; font-weight:600; }
   footer { text-align:center; color:var(--mist); font-size:0.85rem; padding:32px 20px 48px; border-top:1px solid var(--line); }
 </style>
 </head>
 <body>
+<nav class="lang" aria-label="Language"><span aria-current="page">English</span> · <a href="es/" hreflang="es" lang="es">Español</a></nav>
 <div class="glow">
   <header>
     <svg class="lantern" viewBox="0 0 64 64" aria-hidden="true">
