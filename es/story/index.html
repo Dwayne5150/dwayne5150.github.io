@@ -120,6 +120,7 @@ a.btn{display:inline-block;text-decoration:none}
   <section class="stage">
     <div class="stage-head"><span class="num">1</span><div><h2>Tu historia</h2><p>Tanto o tan poco como quieras. Los detalles ayudan: dónde estabas, quién estaba allí, qué recuerdas.</p></div></div>
     <div class="field"><label for="name">¿Cómo te llamamos?</label><input type="text" id="name" placeholder="Tu nombre o un apodo"></div>
+    <div class="field"><label for="pronouns">Tus pronombres <span class="hint">Para nombrarte bien en la canción</span></label><select id="pronouns"><option value="">Elige, u omite</option><option value="ella">ella</option><option value="él">él</option><option value="elle">elle</option><option value="other">Prefiero escribir los míos</option></select><input type="text" id="pronounsOther" placeholder="Tus pronombres" hidden></div>
     <div class="field"><label for="story">¿Qué pasó?</label><textarea id="story" placeholder="Cuéntalo como se lo contarías a un amigo."></textarea></div>
     <div class="row">
       <div class="field"><label for="then">¿Cómo se sintió en ese momento?</label><textarea id="then" style="min-height:80px"></textarea></div>
@@ -219,7 +220,7 @@ $("moods").innerHTML=MOODS.map((m,i)=>`<label class="choice"><input type="checkb
 $("era").innerHTML=ERAS.map(([v,t])=>`<option value="${v}">${t}</option>`).join("");
 $("rungs").innerHTML=RUNGS.map(([n,d,g,p],i)=>`<label class="rung"><input type="radio" name="rung" id="r${i}" value="${n}"><span class="flame" style="background:radial-gradient(circle,var(--glow) 0 ${g*30}%,color-mix(in srgb,var(--glow) ${Math.round(g*45)}%,transparent) ${g*55}%,transparent 72%)"></span><div><div class="rung-top"><h3>${RUNG_ES[n]}</h3><span class="price">${p}</span></div><p>${d}</p></div></label>`).join("");
 
-const TEXT=["name","story","then","now","era","place","music","passions","words","avoid"];
+const TEXT=["name","pronouns","pronounsOther","story","then","now","era","place","music","passions","words","avoid"];
 function read(){
   const d={};TEXT.forEach(k=>d[k]=$(k).value.trim());
   d.moods=[...document.querySelectorAll("#moods input:checked")].map(i=>i.value);
@@ -227,12 +228,14 @@ function read(){
   d.extras=[...document.querySelectorAll("#addons input:checked")].map(i=>i.value);
   return d;
 }
+const pron=d=>d.pronouns==="other"?d.pronounsOther:d.pronouns;
 const isEmpty=d=>TEXT.every(k=>!d[k])&&!d.moods.length&&!d.rung;
 
 function storyText(d){
   const L=[];
   L.push(`OBSIDIAN LANTERN · HISTORIA PARA DWAYNE Y ALEX (en español)`);
   L.push(`De: ${d.name||"(sin nombre)"}`);
+  if(pron(d))L.push(`Pronombres: ${pron(d)}`);
   if(d.rung)L.push(`Peldaño: ${RUNG_ES[d.rung]} / ${d.rung} (${PRICE[d.rung]} CAD)${d.extras.length?" + "+d.extras.join(", "):""}`);
   L.push("");
   if(d.story)L.push("LA HISTORIA (THE STORY)\n"+d.story+"\n");
@@ -258,6 +261,7 @@ function styleTags(d){
 }
 function seeds(d){
   const s=[];
+  if(pron(d))s.push(`Usar sus pronombres: ${pron(d)}`);
   if(d.place)s.push(`Abrir la primera estrofa en ${d.place}: una imagen en la que alguien pueda pararse.`);
   if(d.then)s.push(`Sentimiento de la estrofa 1: "${d.then}"`);
   if(d.now)s.push(`El puente o la última estrofa gira hacia: "${d.now}"`);
@@ -316,7 +320,8 @@ $("clear").onclick=()=>{
   if(!armed){armed=true;$("clear").textContent="Toca otra vez para borrar";setTimeout(()=>{armed=false;$("clear").textContent="Borrar el formulario"},3000);return;}
   $("f").reset();armed=false;$("clear").textContent="Borrar el formulario";try{localStorage.removeItem("ol-draft-es")}catch(e){}render();$("status").textContent="Formulario borrado.";
 };
-load();render();
+const syncP=()=>{$("pronounsOther").hidden=$("pronouns").value!=="other"};$("pronouns").addEventListener("change",syncP);
+load();syncP();render();
 </script>
 
 </body>

@@ -120,6 +120,7 @@ a.btn{display:inline-block;text-decoration:none}
   <section class="stage">
     <div class="stage-head"><span class="num">1</span><div><h2>Your story</h2><p>As much or as little as you want. Details help: where you were, who was there, what you remember.</p></div></div>
     <div class="field"><label for="name">What should we call you?</label><input type="text" id="name" placeholder="First name or a nickname"></div>
+    <div class="field"><label for="pronouns">Your pronouns <span class="hint">So we get you right in the song</span></label><select id="pronouns"><option value="">Choose, or skip</option><option value="she/her">she/her</option><option value="he/him">he/him</option><option value="they/them">they/them</option><option value="other">Let me write my own</option></select><input type="text" id="pronounsOther" placeholder="Your pronouns" hidden></div>
     <div class="field"><label for="story">What happened?</label><textarea id="story" placeholder="Tell it the way you'd tell a friend."></textarea></div>
     <div class="row">
       <div class="field"><label for="then">How did it feel back then?</label><textarea id="then" style="min-height:80px"></textarea></div>
@@ -217,7 +218,7 @@ $("moods").innerHTML=MOODS.map((m,i)=>`<label class="choice"><input type="checkb
 $("era").innerHTML=ERAS.map(([v,t])=>`<option value="${v}">${t}</option>`).join("");
 $("rungs").innerHTML=RUNGS.map(([n,d,g,p],i)=>`<label class="rung"><input type="radio" name="rung" id="r${i}" value="${n}"><span class="flame" style="background:radial-gradient(circle,var(--glow) 0 ${g*30}%,color-mix(in srgb,var(--glow) ${Math.round(g*45)}%,transparent) ${g*55}%,transparent 72%)"></span><div><div class="rung-top"><h3>${n}</h3><span class="price">${p}</span></div><p>${d}</p></div></label>`).join("");
 
-const TEXT=["name","story","then","now","era","place","music","passions","words","avoid"];
+const TEXT=["name","pronouns","pronounsOther","story","then","now","era","place","music","passions","words","avoid"];
 function read(){
   const d={};TEXT.forEach(k=>d[k]=$(k).value.trim());
   d.moods=[...document.querySelectorAll("#moods input:checked")].map(i=>i.value);
@@ -225,12 +226,14 @@ function read(){
   d.extras=[...document.querySelectorAll("#addons input:checked")].map(i=>i.value);
   return d;
 }
+const pron=d=>d.pronouns==="other"?d.pronounsOther:d.pronouns;
 const isEmpty=d=>TEXT.every(k=>!d[k])&&!d.moods.length&&!d.rung;
 
 function storyText(d){
   const L=[];
   L.push(`OBSIDIAN LANTERN · STORY FOR DWAYNE & ALEX`);
   L.push(`From: ${d.name||"(no name given)"}`);
+  if(pron(d))L.push(`Pronouns: ${pron(d)}`);
   if(d.rung)L.push(`Rung: ${d.rung} (${PRICE[d.rung]} CAD)${d.extras.length?" + "+d.extras.join(", "):""}`);
   L.push("");
   if(d.story)L.push("THE STORY\n"+d.story+"\n");
@@ -256,6 +259,7 @@ function styleTags(d){
 }
 function seeds(d){
   const s=[];
+  if(pron(d))s.push(`Use their pronouns: ${pron(d)}`);
   if(d.place)s.push(`Open the first verse in ${d.place}: one image a person could stand in.`);
   if(d.then)s.push(`Verse 1 feeling: "${d.then}"`);
   if(d.now)s.push(`Bridge or last verse turns to: "${d.now}"`);
@@ -314,7 +318,8 @@ $("clear").onclick=()=>{
   if(!armed){armed=true;$("clear").textContent="Tap again to clear";setTimeout(()=>{armed=false;$("clear").textContent="Clear the form"},3000);return;}
   $("f").reset();armed=false;$("clear").textContent="Clear the form";try{localStorage.removeItem("ol-draft")}catch(e){}render();$("status").textContent="Form cleared.";
 };
-load();render();
+const syncP=()=>{$("pronounsOther").hidden=$("pronouns").value!=="other"};$("pronouns").addEventListener("change",syncP);
+load();syncP();render();
 </script>
 
 </body>
