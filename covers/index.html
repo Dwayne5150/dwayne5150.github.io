@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Album Covers · Glass Lantern Studios</title>
+<meta name="description" content="Album covers from The Glass Lantern, with links to listen on Spotify, Apple Music and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { --night:#0d1117; --deep:#151b24; --fog:#c9cdd3; --mist:#8b939e; --gold:#e0b252; --ember:#f2c66d; --line:#2a323d; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body { background:var(--night); color:var(--fog); font-family:Inter,system-ui,sans-serif; font-size:17px; line-height:1.65; }
+  .glow { background:radial-gradient(ellipse at 50% 0%, rgba(224,178,82,0.22), transparent 60%); }
+  header { max-width:680px; margin:0 auto; padding:72px 20px 48px; text-align:center; }
+  .lantern { width:120px; height:170px; margin:0 auto 24px; filter:drop-shadow(0 0 18px rgba(242,198,109,0.6)); }
+  h1, h2 { font-family:"Cormorant Garamond",Georgia,serif; color:#f4efe4; font-weight:700; line-height:1.15; }
+  h1 { font-size:2.6rem; }
+  .studio { margin-top:8px; color:var(--gold); letter-spacing:0.18em; text-transform:uppercase; font-size:0.8rem; font-weight:600; }
+  .partners { margin-top:14px; color:var(--fog); font-size:1rem; }
+  .motto { margin-top:28px; font-family:"Cormorant Garamond",Georgia,serif; font-style:italic; font-size:1.35rem; color:var(--ember); }
+  main { max-width:680px; margin:0 auto; padding:0 20px 64px; }
+  section { border-top:1px solid var(--line); padding:40px 0; }
+  h2 { font-size:1.7rem; margin-bottom:14px; }
+  p + p { margin-top:14px; }
+  .card { background:var(--deep); border:1px solid var(--line); border-left:3px solid var(--gold); border-radius:10px; padding:20px 22px; margin-top:18px; }
+  .hours { font-family:"Cormorant Garamond",Georgia,serif; font-size:1.5rem; color:#f4efe4; }
+  .small { color:var(--mist); font-size:0.92rem; }
+  ul.rooms { list-style:none; margin-top:14px; }
+  ul.rooms li { padding:10px 0; border-bottom:1px dashed var(--line); }
+  ul.rooms li:last-child { border-bottom:0; }
+  ul.rooms b { color:#f4efe4; }
+  a.button { display:inline-block; margin-top:18px; margin-right:8px; padding:12px 22px; border-radius:999px; background:var(--gold); color:#1a1406; font-weight:600; text-decoration:none; }
+  a.button:hover { background:var(--ember); }
+  a { color:var(--ember); }
+  video.photo { display:block; width:100%; height:auto; border-radius:10px; border:1px solid var(--line); margin:6px 0 18px; background:#000; }
+  img.photo { display:block; width:100%; height:auto; border-radius:10px; border:1px solid var(--line); margin:6px 0 18px; }
+  .pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:18px 0; }
+  .pair img.photo { margin:0; }
+  .tagline { font-family:"Cormorant Garamond",Georgia,serif; font-style:italic; font-size:1.35rem; color:var(--ember); }
+  h3 { font-family:"Cormorant Garamond",Georgia,serif; color:#f4efe4; font-size:1.3rem; margin:26px 0 6px; }
+  .lang { position:absolute; top:14px; right:16px; font-size:0.85rem; color:var(--mist); }
+  .lang a { color:var(--ember); text-decoration:none; }
+  .lang [aria-current] { color:#f4efe4; font-weight:600; }
+  .covers { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:16px; margin-top:22px; }
+  .cover { background:var(--deep); border:1px solid var(--line); border-radius:12px; overflow:hidden; display:flex; flex-direction:column; }
+  .cover img { display:block; width:100%; aspect-ratio:1; object-fit:cover; }
+  .cover .meta { padding:12px 14px 14px; display:flex; flex-direction:column; gap:8px; flex:1; }
+  .cover h3 { font-family:"Cormorant Garamond",Georgia,serif; color:#f4efe4; font-size:1.2rem; line-height:1.2; }
+  .cover .series { color:var(--mist); font-size:0.8rem; letter-spacing:0.08em; text-transform:uppercase; }
+  .cover a.listen { margin-top:auto; align-self:flex-start; padding:8px 16px; border-radius:999px; background:var(--gold); color:#1a1406; font-weight:600; font-size:0.9rem; text-decoration:none; }
+  .back { color:var(--ember); text-decoration:none; }
+  header.small-head { padding:72px 20px 24px; }
+  header.small-head .lantern { width:84px; height:119px; }
+  footer { text-align:center; color:var(--mist); font-size:0.85rem; padding:32px 20px 48px; border-top:1px solid var(--line); }
+</style>
+</head>
+<body>
+<nav class="lang" aria-label="Language"><a class="back" href="../">← Glass Lantern Studios</a> · <span aria-current="page">English</span> · <a href="../es/covers/" hreflang="es" lang="es">Español</a></nav>
+<div class="glow">
+  <header class="small-head">
+    <svg class="lantern" viewBox="0 0 120 170" aria-hidden="true">
+  <defs><radialGradient id="lb-glow" cx="50%" cy="55%" r="50%"><stop offset="0" stop-color="#fff3c4"/><stop offset=".4" stop-color="#f2c66d"/><stop offset="1" stop-color="#f2c66d" stop-opacity="0"/></radialGradient></defs>
+  <circle cx="60" cy="12" r="6" fill="none" stroke="#e0b252" stroke-width="3"/>
+  <path d="M60 18 V26" stroke="#e0b252" stroke-width="3"/>
+  <path d="M60 24 L94 52 H26 Z" fill="#e0b252"/>
+  <path d="M60 24 L60 52" stroke="#a87c2c" stroke-width="2"/>
+  <rect x="22" y="52" width="76" height="7" rx="2" fill="#c99a3e"/>
+  <rect x="30" y="59" width="60" height="70" fill="rgba(242,198,109,0.16)"/>
+  <ellipse cx="60" cy="96" rx="30" ry="34" fill="url(#lb-glow)"/>
+  <path d="M60 76 C70 90 68 104 60 112 C52 104 50 90 60 76 Z" fill="#fff3c4"/>
+  <path d="M60 87 C65 96 64 104 60 108 C56 104 55 96 60 87 Z" fill="#f2a93a"/>
+  <rect x="56" y="112" width="8" height="10" fill="#c99a3e"/>
+  <path d="M30 59 V129 M48 59 V129 M72 59 V129 M90 59 V129" stroke="#e0b252" stroke-width="3"/>
+  <path d="M30 59 H90 M30 129 H90" stroke="#e0b252" stroke-width="3"/>
+  <rect x="24" y="129" width="72" height="8" rx="2" fill="#c99a3e"/>
+  <path d="M30 137 H90 L80 152 H40 Z" fill="#e0b252"/>
+  <rect x="44" y="152" width="32" height="8" rx="2" fill="#c99a3e"/>
+</svg>
+    <h1>Album Covers</h1>
+    <div class="studio">The Glass Lantern · Obsidian Lantern</div>
+  </header>
+</div>
+<main>
+  <section>
+    <p>Every album tells a true story. Tap <b>Listen</b> to hear it on Spotify, Apple Music, Deezer and more.</p>
+    <div class="covers">
+      <article class="cover">
+        <img src="../img/covers/monsters-in-transition.jpg" alt="Album cover: Monsters in Transition" loading="lazy" width="836" height="836">
+        <div class="meta"><span class="series">Monsters series</span><h3>Monsters in Transition</h3><a class="listen" href="https://distrokid.com/hyperfollow/theglasslantern/monsters-in-transition/">Listen</a></div>
+      </article>
+      <article class="cover">
+        <img src="../img/covers/monsters-and-the-shadows.jpg" alt="Album cover: Monsters and the Shadows" loading="lazy" width="836" height="836">
+        <div class="meta"><span class="series">Monsters series</span><h3>Monsters and the Shadows</h3><a class="listen" href="https://distrokid.com/hyperfollow/theglasslantern/monsters-and-the-shadows/">Listen</a></div>
+      </article>
+      <article class="cover">
+        <img src="../img/covers/monsters-under-the-bed.jpg" alt="Album cover: Monsters Under the Bed" loading="lazy" width="836" height="836">
+        <div class="meta"><span class="series">Monsters series</span><h3>Monsters Under the Bed</h3><a class="listen" href="https://distrokid.com/hyperfollow/theglasslantern/monsters-under-the-bed/">Listen</a></div>
+      </article>
+    </div>
+    <p style="margin-top:28px">Want an album of your own story? <a href="../story/">Tell us your story</a>.</p>
+  </section>
+</main>
+<footer>Glass Lantern Studios · Dwayne Alexander &amp; Alex Gamboa</footer>
+</body>
+</html>
