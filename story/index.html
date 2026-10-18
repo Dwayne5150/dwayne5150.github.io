@@ -163,6 +163,7 @@ a.btn{display:inline-block;text-decoration:none}
       <label><input type="checkbox" id="x-concert" value="Concert, performed and taped (priced per event)"> Concert, performed and taped · priced per event</label>
     </div>
     <label class="addons" style="font-weight:400;display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="release" style="margin-top:4px"> <span><b>Yes, release my song publicly</b> (Flicker and up). Leave this unticked to keep it private. It’s always your choice.</span></label>
+    <label class="addons" style="font-weight:400;display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="keep100" style="margin-top:4px"> <span><b>Keep 100%: +$50 one-time.</b> We hand you the finished song and full rights, and you release it on your own DistroKid account. Every cent of royalties is yours.</span></label>
     <p class="small">Streaming pays small amounts, so think of royalties as a fair share, not an income. Before anything is released, we sign a simple agreement with you covering consent, credits and your percentage.</p>
     <p class="waive">If money is tight and your story matters to you, tell us anyway. There's always a way in.</p>
   </section>
@@ -227,6 +228,7 @@ function read(){
   const r=document.querySelector("input[name=rung]:checked");d.rung=r?r.value:"";
   d.extras=[...document.querySelectorAll("#addons input:checked")].map(i=>i.value);
   d.release=$("release").checked;
+  d.keep100=$("keep100").checked;
   return d;
 }
 const pron=d=>d.pronouns==="other"?d.pronounsOther:d.pronouns;
@@ -239,6 +241,7 @@ function storyText(d){
   if(pron(d))L.push(`Pronouns: ${pron(d)}`);
   if(d.rung)L.push(`Rung: ${d.rung} (${PRICE[d.rung]} CAD)${d.extras.length?" + "+d.extras.join(", "):""}`);
   if(d.rung&&d.rung!=="Spark")L.push(d.release?"Release: yes, release it publicly":"Release: no, keep it private");
+  if(d.keep100)L.push("Keep 100%: yes (+$50 one-time, hand over song and rights)");
   L.push("");
   if(d.story)L.push("THE STORY\n"+d.story+"\n");
   if(d.then)L.push("HOW IT FELT THEN\n"+d.then+"\n");
@@ -292,6 +295,7 @@ function load(){
   document.querySelectorAll("input[name=rung]").forEach(i=>i.checked=i.value===d.rung);
   document.querySelectorAll("#addons input").forEach(i=>i.checked=(d.extras||[]).includes(i.value));
   $("release").checked=!!d.release;
+  $("keep100").checked=!!d.keep100;
 }
 $("rungs").addEventListener("change",()=>{const r=document.querySelector("input[name=rung]:checked");if(!r||r.value!=="Lighthouse")document.querySelectorAll("#addons input").forEach(i=>i.checked=false)});
 $("f").addEventListener("input",render);

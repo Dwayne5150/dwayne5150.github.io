@@ -163,6 +163,7 @@ a.btn{display:inline-block;text-decoration:none}
       <label><input type="checkbox" id="x-concert" value="Concert, performed and taped (priced per event)"> Concierto en vivo y grabado · precio según el evento</label>
     </div>
     <label class="addons" style="font-weight:400;display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="release" style="margin-top:4px"> <span><b>Sí, quiero publicar mi canción</b> (desde Destello). Déjalo sin marcar para mantenerla privada. Siempre es tu decisión.</span></label>
+    <label class="addons" style="font-weight:400;display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="keep100" style="margin-top:4px"> <span><b>Quédate con el 100%: +$50, pago único.</b> Te entregamos la canción terminada y todos los derechos, y tú la publicas en tu propia cuenta de DistroKid. Todas las regalías son tuyas.</span></label>
     <p class="small">El streaming paga montos pequeños, así que las regalías son una parte justa, no un ingreso. Antes de publicar nada, firmamos contigo un acuerdo sencillo sobre tu consentimiento, los créditos y tu porcentaje.</p>
     <p class="waive">Si el dinero está justo y tu historia te importa, cuéntanosla igual. Siempre hay una forma de entrar.</p>
   </section>
@@ -229,6 +230,7 @@ function read(){
   const r=document.querySelector("input[name=rung]:checked");d.rung=r?r.value:"";
   d.extras=[...document.querySelectorAll("#addons input:checked")].map(i=>i.value);
   d.release=$("release").checked;
+  d.keep100=$("keep100").checked;
   return d;
 }
 const pron=d=>d.pronouns==="other"?d.pronounsOther:d.pronouns;
@@ -241,6 +243,7 @@ function storyText(d){
   if(pron(d))L.push(`Pronombres: ${pron(d)}`);
   if(d.rung)L.push(`Peldaño: ${RUNG_ES[d.rung]} / ${d.rung} (${PRICE[d.rung]} CAD)${d.extras.length?" + "+d.extras.join(", "):""}`);
   if(d.rung&&d.rung!=="Spark")L.push(d.release?"Publicación: sí, publicarla (Release: yes)":"Publicación: no, mantenerla privada (Release: no)");
+  if(d.keep100)L.push("Quedarse con el 100%: sí (+$50 pago único) (Keep 100%: yes)");
   L.push("");
   if(d.story)L.push("LA HISTORIA (THE STORY)\n"+d.story+"\n");
   if(d.then)L.push("CÓMO SE SINTIÓ ENTONCES (HOW IT FELT THEN)\n"+d.then+"\n");
@@ -294,6 +297,7 @@ function load(){
   document.querySelectorAll("input[name=rung]").forEach(i=>i.checked=i.value===d.rung);
   document.querySelectorAll("#addons input").forEach(i=>i.checked=(d.extras||[]).includes(i.value));
   $("release").checked=!!d.release;
+  $("keep100").checked=!!d.keep100;
 }
 $("rungs").addEventListener("change",()=>{const r=document.querySelector("input[name=rung]:checked");if(!r||r.value!=="Lighthouse")document.querySelectorAll("#addons input").forEach(i=>i.checked=false)});
 $("f").addEventListener("input",render);
