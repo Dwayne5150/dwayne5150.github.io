@@ -59,6 +59,14 @@
   .lang a { color:var(--ember); text-decoration:none; }
   .lang [aria-current] { color:#f4efe4; font-weight:600; }
   footer { text-align:center; color:var(--mist); font-size:0.85rem; padding:32px 20px 48px; border-top:1px solid var(--line); }
+  html { scroll-behavior:smooth; }
+  [id] { scroll-margin-top:64px; }
+  .menu { position:sticky; top:0; z-index:10; background:rgba(13,17,23,0.92); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  .menu ul { list-style:none; display:flex; gap:6px; max-width:900px; margin:0 auto; padding:10px 16px; overflow-x:auto; white-space:nowrap; scrollbar-width:none; justify-content:safe center; }
+  .menu ul::-webkit-scrollbar { display:none; }
+  @media (max-width:900px) { .menu ul { justify-content:flex-start; -webkit-mask-image:linear-gradient(90deg,#000 85%,transparent); mask-image:linear-gradient(90deg,#000 85%,transparent); padding-right:40px; } }
+  .menu a { display:block; padding:6px 12px; border-radius:999px; color:var(--fog); text-decoration:none; font-size:0.9rem; }
+  .menu a:hover, .menu a:focus-visible { background:var(--deep); color:var(--ember); }
 </style>
 </head>
 <body>
@@ -72,13 +80,14 @@
   </header>
 </div>
 <div class="rainbow-bar" aria-hidden="true"></div>
+<nav class="menu" aria-label="Secciones"><ul><li><a href="#dwayne">Dwayne</a></li><li><a href="#studio">Estudio</a></li><li><a href="#anchor-ally">Anchor &amp; Ally</a></li><li><a href="#coach-alex">Coach Alex</a></li><li><a href="#momma-rockera">Chef Mamá Rockera</a></li><li><a href="#lighthouse-sessions">Lighthouse Sessions</a></li><li><a href="#contact">Contacto</a></li></ul></nav>
 <main>
-  <section>
-    <h2>Quién soy</h2>
+  <section id="dwayne">
+    <h2>Conoce a Dwayne</h2>
     <p>Músico, narrador y productor de estudio, con más de cuatro décadas en el roots rock, el blues acústico y el folk celta. Empecé a los nueve años tocando la guitarra junto al violín de mi padre, y tocamos juntos durante veintiséis años por todo Canadá.</p>
     <p>No soy terapeuta. Soy alguien que lo ha vivido, y la música es lo que me ha ayudado a salir adelante. Todo lo que hago nace de la vida real, y Glass Lantern Studios está construido sobre esa experiencia vivida, para que nadie tenga que enfrentar lo difícil en soledad.</p>
   </section>
-  <section>
+  <section id="studio">
     <h2>El estudio</h2>
     <p>Glass Lantern Studios es una casa de música, palabra hablada e historias, y también un puerto seguro. Álbumes conceptuales y canciones que dan forma honesta a lo pesado y lo no dicho, y compañía para las horas de todos los días.</p>
     <ul class="rooms">
@@ -159,7 +168,7 @@
     <p style="margin-top:20px">Es gratis. Envíanos un mensaje y te agregamos a la invitación. Recibirás el enlace de la sala por correo, y tu dirección queda privada para los demás invitados.</p>
     <a class="button" href="mailto:dogpatchsspanishfly@gmail.com?subject=Invitaci%C3%B3n%20a%20las%20Lighthouse%20Sessions&amp;body=Hola%2C%20me%20gustar%C3%ADa%20unirme%20a%20las%20Lighthouse%20Sessions.">Pide tu invitación</a>
   </section>
-  <section>
+  <section id="contact">
     <h2>Encuéntrame</h2>
     <p>Acompáñanos en vivo en TikTok todos los días.</p>
     <a class="button" href="https://www.tiktok.com/@glasslantern1">Sigue a Dwayne en TikTok</a>
