@@ -97,6 +97,9 @@ a.btn{display:inline-block;text-decoration:none}
 .lang a{color:var(--sea)}
 .lang [aria-current]{color:var(--ink);font-weight:700}
 .back{color:var(--sea)}
+.crisis{margin:0 0 28px;padding:16px 18px;border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:8px;background:var(--surface);font-size:15px}
+.crisis p+p{margin-top:8px}
+.crisis a{color:var(--sea);font-weight:700}
 </style>
 </head>
 <body>
@@ -113,6 +116,12 @@ a.btn{display:inline-block;text-decoration:none}
     <p>You don't need to be a musician or an artist. If you've lived it and it marked you, it's worth telling. Dark or light, big or small, as long as it's true.</p>
     <p class="promise">Nothing you type here is sent anywhere. When you're ready, email it to Dwayne and Alex from the bottom of the page. Your draft stays saved on this device so you can come back to it; press <b>Clear the form</b> at the bottom when you're done, especially on a shared computer.</p>
   </header>
+
+  <aside class="crisis" aria-label="Crisis lines">
+    <p><b>If you’re in danger right now,</b> please reach out to a crisis line. They’re free and open 24 hours a day.</p>
+    <p>Canada and the US: call or text <a href="tel:988">988</a>. Peru: call <a href="tel:113">113, option 5</a>. Anywhere else: <a href="https://findahelpline.com">findahelpline.com</a>.</p>
+    <p class="small">Glass Lantern is peer support, not emergency care.</p>
+  </aside>
 
   <form id="f" autocomplete="off">
   <div class="wrap" style="padding:0">
