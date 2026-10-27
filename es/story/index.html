@@ -186,9 +186,9 @@ Dad, play me one tune more.</p>
     <div class="rungs" id="rungs"></div>
     <div class="addons" id="addons" hidden>
       <span class="legend">Extras del Faro</span>
-      <label><input type="checkbox" id="x-merch" value="Merch, t-shirt with your artwork ($30–50)"> Merch: camiseta con tu arte · $30–50</label>
-      <label><input type="checkbox" id="x-video" value="Video ($150–300)"> Video · $150–300</label>
-      <label><input type="checkbox" id="x-concert" value="Concert, performed and taped (priced per event)"> Concierto en vivo y grabado · precio según el evento</label>
+      <label><input type="checkbox" id="x-merch" value="Merch, t-shirt with your artwork ($40)"> Merch: camiseta con tu arte · $40</label>
+      <label><input type="checkbox" id="x-video" value="Video ($40)"> Video · $40</label>
+      <label><input type="checkbox" id="x-concert" value="Concert, performed and taped ($50)"> Concierto en vivo y grabado · $50</label>
     </div>
     <label class="addons" style="font-weight:400;display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="release" style="margin-top:4px"> <span><b>Sí, quiero publicar mi canción</b> (desde Destello). Déjalo sin marcar para mantenerla privada. Siempre es tu decisión.</span></label>
     <label class="addons" style="font-weight:400;display:flex;gap:10px;align-items:flex-start"><input type="checkbox" id="keep100" style="margin-top:4px"> <span><b>Quédate con el 100%: +$50, pago único.</b> Te entregamos la canción terminada y todos los derechos, y tú la publicas en tu propia cuenta de DistroKid. Todas las regalías son tuyas.</span></label>
@@ -237,11 +237,11 @@ const ERAS=[["","Elige una década"],["40s","Años 40 o antes"],["50s","Años 50
 const ERA_SOUND={"40s":"1940s swing and big band, vintage ribbon-mic warmth","50s":"1950s rockabilly warmth, tape echo","60s":"1960s soul and folk revival, warm analog","70s":"1970s classic rock and country, wide stereo","80s":"1980s gated drums, chorus guitars, synth pads","90s":"1990s alt-rock and grunge texture, raw guitars","00s":"2000s indie and pop-punk energy","10s":"2010s indie folk, stomp-and-clap","20s":"2020s modern indie, lo-fi textures, bedroom-pop intimacy"};
 const MOOD_SOUND={"Tender":"intimate, fingerstyle acoustic","Hopeful":"rising build, major-key lift","Defiant":"driving rhythm, gritty edge","Big and sweeping":"cinematic swell, layered strings","Quiet":"sparse arrangement, close-mic vocal","Celebratory":"upbeat, handclaps, singalong chorus","Bittersweet":"minor-to-major turn, slow blues phrasing","Fun":"bouncy groove, playful hooks","Comforting":"warm acoustic, soft vocal, gentle reassurance","Calming":"slow tempo, soft pads, steady breathing rhythm","Healing":"gradual lift, soft piano and strings, warm resolve","Brave":"steady build, firm drums, rising chorus","Letting go":"builds then releases, open space, exhale ending","Not alone":"warm group harmonies, gang vocals, communal feel","Seen and heard":"intimate close-mic vocal, honest lyrics up front","Strong again":"driving rhythm, anthemic chorus, triumphant lift"};
 const RUNGS=[
- ["Spark","Una canción. Tu historia en una sola pieza, solo para ti.",.35,"Desde $25"],
- ["Flicker","Una canción más una imagen. Publicada en Spotify, Apple Music y más, con el 25% de sus regalías para ti.",.5,"Desde $55"],
- ["Glow","Tres canciones más arte. Publicadas en Spotify, Apple Music y más, con el 35% de las regalías para ti.",.65,"Desde $120"],
- ["Flame","Seis canciones. Medio álbum, publicado en Spotify, Apple Music y más, con el 50% de las regalías para ti.",.82,"Desde $275"],
- ["Lighthouse","El álbum completo: diez canciones y una portada, publicado con tu propio nombre artístico y el 50% de las regalías para ti. Merch, video y un concierto grabado como extras.",1,"Desde $600"]];
+ ["Spark","Una canción. Tu historia en una sola pieza, solo para ti.",.35,"Desde $10"],
+ ["Flicker","Una canción más una imagen. Publicada en Spotify, Apple Music y más, con el 25% de sus regalías para ti.",.5,"Desde $20"],
+ ["Glow","Tres canciones más arte. Publicadas en Spotify, Apple Music y más, con el 35% de las regalías para ti.",.65,"Desde $40"],
+ ["Flame","Seis canciones. Medio álbum, publicado en Spotify, Apple Music y más, con el 50% de las regalías para ti.",.82,"Desde $75"],
+ ["Lighthouse","El álbum completo: diez canciones y una portada, publicado con tu propio nombre artístico y el 50% de las regalías para ti. Merch, video y un concierto grabado como extras.",1,"Desde $125"]];
 const ERA_LABEL=Object.fromEntries(ERAS);
 const PRICE=Object.fromEntries(RUNGS.map(r=>[r[0],r[3]]));
 const EXAMPLE={name:"María",story:"Todos los domingos mi abuelo freía pan en una sartén de hierro y tocaba las mismas tres melodías de violín en el porche mientras se enfriaba. Cuando se enfermó, fui yo quien se sentaba con él, y él tarareaba esas melodías cuando ya no encontraba las palabras. Después de que partió, encontré la sartén en el sótano de mi mamá. Todavía hago pan en ella cada domingo, y tarareo las melodías que apenas recuerdo.",then:"Asustada, y demasiado joven para saber cómo despedirme.",now:"Agradecida. Como si me hubiera dejado algo que todavía puedo sostener.",moods:["Tender","Bittersweet"],era:"",place:"El porche del abuelo",music:"Violín tradicional, folk, la radio en la camioneta del abuelo",passions:"Hornear, acampar, mis dos hijos",words:"\"Despacito y con calma, mija\"",avoid:"El nombre de mi tío",rung:"Spark",extras:[]};

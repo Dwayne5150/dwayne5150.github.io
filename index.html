@@ -72,6 +72,17 @@
   .start b { color:var(--ember); }
   #crisis .card p + p { margin-top:10px; }
   #crisis a { color:var(--ember); }
+  .next { font-family:"Cormorant Garamond",Georgia,serif; font-size:1.35rem; color:#f4efe4; margin:-4px 0 4px; }
+  .next.live { color:var(--ember); }
+  ul.tiers { list-style:none; margin-top:14px; }
+  ul.tiers li { display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px dashed var(--line); }
+  ul.tiers li:last-child { border-bottom:0; }
+  ul.tiers b { color:#f4efe4; }
+  ul.tiers .price { font-family:"Cormorant Garamond",Georgia,serif; font-size:1.35rem; color:var(--ember); white-space:nowrap; }
+  .ticks label { display:flex; gap:10px; align-items:center; margin-top:10px; cursor:pointer; }
+  .ticks input { width:18px; height:18px; accent-color:var(--gold); }
+  button.button { display:inline-block; margin-top:18px; padding:12px 22px; border:0; border-radius:999px; background:var(--gold); color:#1a1406; font:600 17px Inter,system-ui,sans-serif; cursor:pointer; }
+  button.button:hover { background:var(--ember); }
 </style>
 </head>
 <body>
@@ -82,11 +93,11 @@
     <h1>Glass Lantern Studios</h1>
     <p class="partners">Glass Lantern Studios is run by co-founders Dwayne Alexander (he/him) and <a href="https://coachalex1.github.io">Alex Gamboa</a> (she/her), equal partners in everything we make.</p>
     <p class="motto">We don't hand you the horizon. We hand you a lantern.</p>
-    <div class="start"><p><b>Start here: join the free Lighthouse Sessions.</b> Music and company every morning, Tuesday to Saturday. No pressure to talk.</p><a class="button" href="mailto:dogpatchsspanishfly@gmail.com?subject=Lighthouse%20Sessions%20invite&amp;body=Hi%2C%20I%E2%80%99d%20like%20to%20join%20the%20Lighthouse%20Sessions.">Request an invite</a></div>
+    <div class="start"><p><b>Pull up a chair.</b> Free music, good company, every morning Tuesday to Saturday. Drop the mask, stay awhile.</p><p class="next" aria-live="polite"></p><a class="button" href="https://preview.chattersocial.io/user/de942aec-63f0-4ccb-adc0-604ca78fa06f">Join on Chatter</a></div>
   </header>
 </div>
 <div class="rainbow-bar" aria-hidden="true"></div>
-<nav class="menu" aria-label="Sections"><ul><li><a href="#dwayne">Dwayne</a></li><li><a href="#studio">Studio</a></li><li><a href="#calavera-hour">Calavera Hour</a></li><li><a href="#anchor-ally">Anchor &amp; Ally</a></li><li><a href="#coach-alex">Coach Alex</a></li><li><a href="#momma-rockera">Chef Mamá Rockera</a></li><li><a href="#lighthouse-sessions">Lighthouse Sessions</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+<nav class="menu" aria-label="Sections"><ul><li><a href="#dwayne">Dwayne</a></li><li><a href="#studio">Studio</a></li><li><a href="#calavera-hour">Calavera Hour</a></li><li><a href="#anchor-ally">Anchor &amp; Ally</a></li><li><a href="#coach-alex">Coach Alex</a></li><li><a href="#momma-rockera">Chef Mamá Rockera</a></li><li><a href="#lighthouse-sessions">Lighthouse Sessions</a></li><li><a href="#obsidian-lantern">Obsidian Lantern</a></li><li><a href="#signup">Sign up</a></li><li><a href="#contact">Contact</a></li></ul></nav>
 <main>
   <section id="dwayne">
     <h2>Meet Dwayne</h2>
@@ -180,9 +191,41 @@
       <div>Tuesday to Saturday</div>
       <div class="small">Mountain Time (Edmonton)</div>
       <div class="small">8:30 to 9:30 am Eastern Time (Florida)</div>
+      <div class="next" style="margin-top:12px;font-size:1.15rem"></div>
     </div>
     <p style="margin-top:20px">It’s free. Send us a quick note and we’ll add you to the invite. You’ll get the room link by email, and your address stays private from the other guests.</p>
     <a class="button" href="mailto:dogpatchsspanishfly@gmail.com?subject=Lighthouse%20Sessions%20invite&amp;body=Hi%2C%20I%E2%80%99d%20like%20to%20join%20the%20Lighthouse%20Sessions.">Request an invite</a>
+    <a class="button" href="https://preview.chattersocial.io/user/de942aec-63f0-4ccb-adc0-604ca78fa06f">Join on Chatter</a>
+  </section>
+  <section id="obsidian-lantern">
+    <h2>Obsidian Lantern</h2>
+    <p class="tagline">Your story is worth a song. We turn real lives into real music, starting at $10.</p>
+    <p style="margin-top:14px">Obsidian Lantern is our record label. You don't need talent to come through the door, just a true story, dark or light. We gather your story and your whole world (your era, your music, your passions) and weave it into songs that sound like you.</p>
+    <ul class="tiers">
+      <li><div><b>The Spark</b><br><span class="small">One song</span></div><span class="price">$10</span></li>
+      <li><div><b>The Flicker</b><br><span class="small">One song plus an image</span></div><span class="price">$20</span></li>
+      <li><div><b>The Glow</b><br><span class="small">Three songs plus artwork</span></div><span class="price">$40</span></li>
+      <li><div><b>The Flame</b><br><span class="small">Six songs, half an album</span></div><span class="price">$75</span></li>
+      <li><div><b>The Lighthouse</b><br><span class="small">A full ten-song album with cover</span></div><span class="price">$125</span></li>
+    </ul>
+    <h3>Add-ons</h3>
+    <ul class="tiers">
+      <li><div><b>T-shirt</b><br><span class="small">With your artwork</span></div><span class="price">$40</span></li>
+      <li><div><b>Music video</b><br><span class="small">For one song</span></div><span class="price">$40</span></li>
+      <li><div><b>Taped virtual concert</b></div><span class="price">$50</span></li>
+    </ul>
+    <p class="small" style="margin-top:14px">Prices in Canadian dollars. You pay nothing until we've read your story and agreed the rung and price together.</p>
+    <a class="button" href="story/">Tell us your story</a>
+  </section>
+  <section id="signup">
+    <h2>Stay in the light</h2>
+    <p>Don't miss a morning. Get session reminders and new music in your inbox.</p>
+    <div class="ticks">
+      <label><input type="checkbox" id="want-sessions" checked> Session reminders</label>
+      <label><input type="checkbox" id="want-music" checked> New music</label>
+    </div>
+    <button type="button" class="button" id="signup-send">Sign me up</button>
+    <p class="small" style="margin-top:12px">This opens an email to us. Just hit send. We'll never share your address.</p>
   </section>
   <section id="crisis" aria-label="Crisis lines">
     <div class="card">
@@ -203,5 +246,39 @@
   </section>
 </main>
 <footer>Glass Lantern Studios · Dwayne Alexander &amp; Alex Gamboa</footer>
+<script>
+(function(){
+  var L=document.documentElement.lang==="es"?"es":"en";
+  var T={en:{live:"Live now: we're in the room. Come on in.",next:"Next session: ",your:" your time",today:"today",tom:"tomorrow"},
+         es:{live:"En vivo ahora: estamos en la sala. Pasa.",next:"Próxima sesión: ",your:" (tu hora)",today:"hoy",tom:"mañana"}}[L];
+  var TZ="America/Edmonton";
+  function off(t){var p={};new Intl.DateTimeFormat("en-US",{timeZone:TZ,hourCycle:"h23",year:"numeric",month:"numeric",day:"numeric",hour:"numeric",minute:"numeric"}).formatToParts(new Date(t)).forEach(function(x){p[x.type]=x.value});return Date.UTC(+p.year,p.month-1,+p.day,+p.hour,+p.minute)-Math.floor(t/60000)*60000;}
+  function at(y,m,d,h,mi){var g=Date.UTC(y,m,d,h,mi);var t=g-off(g);return g-off(t);}
+  function parts(t){var p={};new Intl.DateTimeFormat("en-US",{timeZone:TZ,year:"numeric",month:"numeric",day:"numeric",weekday:"short"}).formatToParts(new Date(t)).forEach(function(x){p[x.type]=x.value});return p;}
+  function show(){
+    var now=Date.now(),txt="",live=false;
+    for(var i=0;i<9;i++){
+      var p=parts(now+i*864e5);
+      if(["Tue","Wed","Thu","Fri","Sat"].indexOf(p.weekday)<0)continue;
+      var s=at(+p.year,p.month-1,+p.day,6,30),e=s+36e5;
+      if(now>=e)continue;
+      if(now>=s){live=true;txt=T.live;break;}
+      var loc=L==="es"?"es":undefined,d=new Date(s),n=new Date(now),k=new Date(now+864e5);
+      var day=d.toDateString()===n.toDateString()?T.today:d.toDateString()===k.toDateString()?T.tom:d.toLocaleDateString(loc,{weekday:"long"});
+      txt=T.next+day+", "+d.toLocaleTimeString(loc,{hour:"numeric",minute:"2-digit"})+T.your;break;
+    }
+    document.querySelectorAll(".next").forEach(function(el){el.textContent=txt;el.classList.toggle("live",live);});
+  }
+  try{show();setInterval(show,60000);}catch(e){}
+  var b=document.getElementById("signup-send");
+  if(b)b.addEventListener("click",function(){
+    var r=document.getElementById("want-sessions").checked,m=document.getElementById("want-music").checked;
+    if(!r&&!m){document.getElementById("want-sessions").checked=true;document.getElementById("want-music").checked=true;r=m=true;}
+    var subj=L==="es"?"Suscripción: Glass Lantern Studios":"Sign me up: Glass Lantern Studios";
+    var body=L==="es"?("Hola, por favor agréguenme a la lista.\n\nRecordatorios de las sesiones: "+(r?"sí":"no")+"\nMúsica nueva: "+(m?"sí":"no")+"\n\nMi nombre: "):("Hi, please add me to the list.\n\nSession reminders: "+(r?"yes":"no")+"\nNew music: "+(m?"yes":"no")+"\n\nMy name: ");
+    location.href="mailto:"+"dogpatchsspanishfly@gmail.com"+"?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(body);
+  });
+})();
+</script>
 </body>
 </html>

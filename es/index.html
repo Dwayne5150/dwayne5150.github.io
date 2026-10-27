@@ -72,6 +72,17 @@
   .start b { color:var(--ember); }
   #crisis .card p + p { margin-top:10px; }
   #crisis a { color:var(--ember); }
+  .next { font-family:"Cormorant Garamond",Georgia,serif; font-size:1.35rem; color:#f4efe4; margin:-4px 0 4px; }
+  .next.live { color:var(--ember); }
+  ul.tiers { list-style:none; margin-top:14px; }
+  ul.tiers li { display:flex; justify-content:space-between; gap:16px; padding:12px 0; border-bottom:1px dashed var(--line); }
+  ul.tiers li:last-child { border-bottom:0; }
+  ul.tiers b { color:#f4efe4; }
+  ul.tiers .price { font-family:"Cormorant Garamond",Georgia,serif; font-size:1.35rem; color:var(--ember); white-space:nowrap; }
+  .ticks label { display:flex; gap:10px; align-items:center; margin-top:10px; cursor:pointer; }
+  .ticks input { width:18px; height:18px; accent-color:var(--gold); }
+  button.button { display:inline-block; margin-top:18px; padding:12px 22px; border:0; border-radius:999px; background:var(--gold); color:#1a1406; font:600 17px Inter,system-ui,sans-serif; cursor:pointer; }
+  button.button:hover { background:var(--ember); }
 </style>
 </head>
 <body>
@@ -82,11 +93,11 @@
     <h1>Glass Lantern Studios</h1>
     <p class="partners">Glass Lantern Studios está dirigido por sus cofundadores, Dwayne Alexander (él) y <a href="https://coachalex1.github.io">Alex Gamboa</a> (ella), socios a partes iguales en todo lo que hacemos.</p>
     <p class="motto">No te damos el horizonte. Te damos una linterna.</p>
-    <div class="start"><p><b>Empieza aquí: únete a las Lighthouse Sessions, gratis.</b> Música y compañía cada mañana, de martes a sábado. Sin presión para hablar.</p><a class="button" href="mailto:dogpatchsspanishfly@gmail.com?subject=Invitaci%C3%B3n%20a%20las%20Lighthouse%20Sessions&amp;body=Hola%2C%20me%20gustar%C3%ADa%20unirme%20a%20las%20Lighthouse%20Sessions.">Pide tu invitación</a></div>
+    <div class="start"><p><b>Acerca una silla.</b> Música gratis, buena compañía, cada mañana de martes a sábado. Deja la máscara, quédate un rato.</p><p class="next" aria-live="polite"></p><a class="button" href="https://preview.chattersocial.io/user/de942aec-63f0-4ccb-adc0-604ca78fa06f">Únete en Chatter</a></div>
   </header>
 </div>
 <div class="rainbow-bar" aria-hidden="true"></div>
-<nav class="menu" aria-label="Secciones"><ul><li><a href="#dwayne">Dwayne</a></li><li><a href="#studio">Estudio</a></li><li><a href="#calavera-hour">Hora Calavera</a></li><li><a href="#anchor-ally">Anchor &amp; Ally</a></li><li><a href="#coach-alex">Coach Alex</a></li><li><a href="#momma-rockera">Chef Mamá Rockera</a></li><li><a href="#lighthouse-sessions">Lighthouse Sessions</a></li><li><a href="#contact">Contacto</a></li></ul></nav>
+<nav class="menu" aria-label="Secciones"><ul><li><a href="#dwayne">Dwayne</a></li><li><a href="#studio">Estudio</a></li><li><a href="#calavera-hour">Hora Calavera</a></li><li><a href="#anchor-ally">Anchor &amp; Ally</a></li><li><a href="#coach-alex">Coach Alex</a></li><li><a href="#momma-rockera">Chef Mamá Rockera</a></li><li><a href="#lighthouse-sessions">Lighthouse Sessions</a></li><li><a href="#obsidian-lantern">Obsidian Lantern</a></li><li><a href="#signup">Suscríbete</a></li><li><a href="#contact">Contacto</a></li></ul></nav>
 <main>
   <section id="dwayne">
     <h2>Conoce a Dwayne</h2>
@@ -180,9 +191,41 @@
       <div>De martes a sábado</div>
       <div class="small">Hora de la Montaña (Edmonton)</div>
       <div class="small">8:30 a 9:30 a. m. hora del Este (Florida)</div>
+      <div class="next" style="margin-top:12px;font-size:1.15rem"></div>
     </div>
     <p style="margin-top:20px">Es gratis. Envíanos un mensaje y te agregamos a la invitación. Recibirás el enlace de la sala por correo, y tu dirección queda privada para los demás invitados.</p>
     <a class="button" href="mailto:dogpatchsspanishfly@gmail.com?subject=Invitaci%C3%B3n%20a%20las%20Lighthouse%20Sessions&amp;body=Hola%2C%20me%20gustar%C3%ADa%20unirme%20a%20las%20Lighthouse%20Sessions.">Pide tu invitación</a>
+    <a class="button" href="https://preview.chattersocial.io/user/de942aec-63f0-4ccb-adc0-604ca78fa06f">Únete en Chatter</a>
+  </section>
+  <section id="obsidian-lantern">
+    <h2>Obsidian Lantern</h2>
+    <p class="tagline">Tu historia merece una canción. Convertimos vidas reales en música real, desde $10.</p>
+    <p style="margin-top:14px">Obsidian Lantern es nuestro sello discográfico. No necesitas talento para entrar, solo una historia verdadera, oscura o luminosa. Reunimos tu historia y todo tu mundo (tu época, tu música, tus pasiones) y la tejemos en canciones que suenan como tú.</p>
+    <ul class="tiers">
+      <li><div><b>The Spark</b><br><span class="small">Una canción</span></div><span class="price">$10</span></li>
+      <li><div><b>The Flicker</b><br><span class="small">Una canción más una imagen</span></div><span class="price">$20</span></li>
+      <li><div><b>The Glow</b><br><span class="small">Tres canciones más arte</span></div><span class="price">$40</span></li>
+      <li><div><b>The Flame</b><br><span class="small">Seis canciones, medio álbum</span></div><span class="price">$75</span></li>
+      <li><div><b>The Lighthouse</b><br><span class="small">Un álbum completo de diez canciones con portada</span></div><span class="price">$125</span></li>
+    </ul>
+    <h3>Extras</h3>
+    <ul class="tiers">
+      <li><div><b>Camiseta</b><br><span class="small">Con tu arte</span></div><span class="price">$40</span></li>
+      <li><div><b>Video musical</b><br><span class="small">Para una canción</span></div><span class="price">$40</span></li>
+      <li><div><b>Concierto virtual grabado</b></div><span class="price">$50</span></li>
+    </ul>
+    <p class="small" style="margin-top:14px">Precios en dólares canadienses. No pagas nada hasta que hayamos leído tu historia y acordado juntos el nivel y el precio.</p>
+    <a class="button" href="story/">Cuéntanos tu historia</a>
+  </section>
+  <section id="signup">
+    <h2>Quédate en la luz</h2>
+    <p>No te pierdas ninguna mañana. Recibe recordatorios de las sesiones y música nueva en tu correo.</p>
+    <div class="ticks">
+      <label><input type="checkbox" id="want-sessions" checked> Recordatorios de las sesiones</label>
+      <label><input type="checkbox" id="want-music" checked> Música nueva</label>
+    </div>
+    <button type="button" class="button" id="signup-send">Suscríbeme</button>
+    <p class="small" style="margin-top:12px">Esto abre un correo para nosotros. Solo dale a enviar. Nunca compartimos tu dirección.</p>
   </section>
   <section id="crisis" aria-label="Líneas de crisis">
     <div class="card">
@@ -203,5 +246,39 @@
   </section>
 </main>
 <footer>Glass Lantern Studios · Dwayne Alexander &amp; Alex Gamboa</footer>
+<script>
+(function(){
+  var L=document.documentElement.lang==="es"?"es":"en";
+  var T={en:{live:"Live now: we're in the room. Come on in.",next:"Next session: ",your:" your time",today:"today",tom:"tomorrow"},
+         es:{live:"En vivo ahora: estamos en la sala. Pasa.",next:"Próxima sesión: ",your:" (tu hora)",today:"hoy",tom:"mañana"}}[L];
+  var TZ="America/Edmonton";
+  function off(t){var p={};new Intl.DateTimeFormat("en-US",{timeZone:TZ,hourCycle:"h23",year:"numeric",month:"numeric",day:"numeric",hour:"numeric",minute:"numeric"}).formatToParts(new Date(t)).forEach(function(x){p[x.type]=x.value});return Date.UTC(+p.year,p.month-1,+p.day,+p.hour,+p.minute)-Math.floor(t/60000)*60000;}
+  function at(y,m,d,h,mi){var g=Date.UTC(y,m,d,h,mi);var t=g-off(g);return g-off(t);}
+  function parts(t){var p={};new Intl.DateTimeFormat("en-US",{timeZone:TZ,year:"numeric",month:"numeric",day:"numeric",weekday:"short"}).formatToParts(new Date(t)).forEach(function(x){p[x.type]=x.value});return p;}
+  function show(){
+    var now=Date.now(),txt="",live=false;
+    for(var i=0;i<9;i++){
+      var p=parts(now+i*864e5);
+      if(["Tue","Wed","Thu","Fri","Sat"].indexOf(p.weekday)<0)continue;
+      var s=at(+p.year,p.month-1,+p.day,6,30),e=s+36e5;
+      if(now>=e)continue;
+      if(now>=s){live=true;txt=T.live;break;}
+      var loc=L==="es"?"es":undefined,d=new Date(s),n=new Date(now),k=new Date(now+864e5);
+      var day=d.toDateString()===n.toDateString()?T.today:d.toDateString()===k.toDateString()?T.tom:d.toLocaleDateString(loc,{weekday:"long"});
+      txt=T.next+day+", "+d.toLocaleTimeString(loc,{hour:"numeric",minute:"2-digit"})+T.your;break;
+    }
+    document.querySelectorAll(".next").forEach(function(el){el.textContent=txt;el.classList.toggle("live",live);});
+  }
+  try{show();setInterval(show,60000);}catch(e){}
+  var b=document.getElementById("signup-send");
+  if(b)b.addEventListener("click",function(){
+    var r=document.getElementById("want-sessions").checked,m=document.getElementById("want-music").checked;
+    if(!r&&!m){document.getElementById("want-sessions").checked=true;document.getElementById("want-music").checked=true;r=m=true;}
+    var subj=L==="es"?"Suscripción: Glass Lantern Studios":"Sign me up: Glass Lantern Studios";
+    var body=L==="es"?("Hola, por favor agréguenme a la lista.\n\nRecordatorios de las sesiones: "+(r?"sí":"no")+"\nMúsica nueva: "+(m?"sí":"no")+"\n\nMi nombre: "):("Hi, please add me to the list.\n\nSession reminders: "+(r?"yes":"no")+"\nNew music: "+(m?"yes":"no")+"\n\nMy name: ");
+    location.href="mailto:"+"dogpatchsspanishfly@gmail.com"+"?subject="+encodeURIComponent(subj)+"&body="+encodeURIComponent(body);
+  });
+})();
+</script>
 </body>
 </html>
